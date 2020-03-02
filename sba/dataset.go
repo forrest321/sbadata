@@ -43,9 +43,13 @@ func GetDataSets(page, limit int) ([]DataSet, error) {
 	defer db.Close()
 	ds := &DataSets{}
 
-	offset := (page - 1) * limit
+	if page == 0 && limit == 0 {
+		db.Find(&ds)
+	} else {
+		offset := (page - 1) * limit
+		db.Offset(offset).Limit(limit).Find(&ds)
+	}
 
-	db.Offset(offset).Limit(limit).Find(&ds)
 	return *ds, nil
 }
 
