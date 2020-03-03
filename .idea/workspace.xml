@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e3f52c-07a2-4031-a3bd-cd54f37fb832" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/fo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sba.db" beforeDir="false" afterPath="$PROJECT_DIR$/sba.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sba/dataset.go" beforeDir="false" afterPath="$PROJECT_DIR$/sba/dataset.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skillsTest" beforeDir="false" afterPath="$PROJECT_DIR$/skillsTest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/modules.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,10 +182,10 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="526" y="0" width="1394" height="1052" key="SettingsEditor/0.0.1920.1048@0.0.1920.1048" timestamp="1583265689737" />
-    <state x="855" y="0" width="1065" height="1052" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583265961652">
+    <state x="855" y="0" width="1065" height="1052" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583279801177">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state x="855" y="0" width="1065" height="1052" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1048@0.0.1920.1048" timestamp="1583265961652" />
+    <state x="855" y="0" width="1065" height="1052" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1048@0.0.1920.1048" timestamp="1583279801177" />
     <state x="607" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583263936767">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>

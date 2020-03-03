@@ -51,7 +51,7 @@ func main() {
 	e.GET("/", indexHandler)
 	e.GET("/details/:id", detailsHandler)
 	e.GET("/datasets", datasetHandler)
-	e.Logger.Fatal(e.Start(":"))
+	e.Logger.Fatal(e.Start(":80"))
 }
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
@@ -59,7 +59,6 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 }
 
 func indexHandler(c echo.Context) error {
-	t.templates = template.Must(template.ParseGlob("web/templates/*.html"))
 	ds, err := dataset.GetDataSets(0, 0)
 	if err != nil {
 		c.Logger().Fatal(err)
@@ -69,7 +68,6 @@ func indexHandler(c echo.Context) error {
 }
 
 func detailsHandler(c echo.Context) error {
-	t.templates = template.Must(template.ParseGlob("web/templates/*.html"))
 	id := c.Param("id")
 	if id == "" {
 		return errors.New("bad request")
