@@ -14,6 +14,23 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
+    <script>
+      $(document).ready(function() {
+        $("#sbaDatasets").DataTable({
+          "deferRender": true
+        });
+      });
+      
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159551986-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-159551986-1');
+    </script>    
     <title>SBA Datasets</title>
   </head>
   <body>
@@ -36,7 +53,7 @@
         <tbody>
           {{ range . }}
             <tr>
-              <td>{{ .Identifier }}</td>
+              <td><a href="/details/{{ .Identifier }}"> {{ .Identifier }} </a></td>
               <td>{{ .Title }}</td>
               <td>{{ .Description }}</td>
               {{ if .License }}
@@ -54,13 +71,6 @@
           {{ end }}
         </tbody>
       </table>
-    </div>
-    <script>
-      $(document).ready(function() {
-        $("#sbaDatasets").DataTable({
-          "deferRender": true
-        });
-      } );
-    </script>
+    </div>    
   </body>
 </html>

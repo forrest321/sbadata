@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159551986-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-159551986-1');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col">
+                    <h2>{{ .Title }}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ .Identifier }}
+                </div>
+                {{ if .LandingPage }}
+                    <div class="col">
+                        <a target="_blank" href="{{ .LandingPage }}">Landing Page</a>
+                    </div>
+                {{ end }}
+                {{ if .DistAccessUrl }}
+                    <div class="col pull-right">
+                        Access URL:
+                        {{ if .DistTitle }}
+                            <a target="_blank" href="{{ .DistAccessUrl }}">{{ .DistTitle }}</a>
+                        {{ else }}
+                            <a target="_blank" href="{{ .DistAccessUrl }}">{{ .DistAccessUrl }}</a>
+                        {{ end }}
+                    </div>
+                {{ end }}
+                {{ if .DistDownloadUrl }}
+                    <div class="col">
+                        Download Link:
+                        {{ if .DistTitle }}
+                            <a target="_blank" href="{{ .DistDownloadUrl }}">{{ .DistTitle }}</a>
+                        {{ else }}
+                            <a target="_blank" href="{{ .DistDownloadUrl }}">{{ .DistDownloadUrl }}</a>
+                        {{ end }}
+                    </div>
+                {{ end }}
+            </div>
+            <div class="row">
+                <div class="col">
+                  &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row row-cols-4">
+                <span class="col">
+                    Last Modified:
+                </span>
+                <span class="col">
+                    {{ .Modified }}
+                </span>
+                <span class="col">
+                    Access Level:
+                </span>
+                <span class="col">
+                    {{ .AccessLevel }}
+                </span>
+            </div>
+            <div class="row">
+                <div class="col">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <blockquote class="blockquote">
+                    {{ .Description }}
+                </blockquote>
+            </div>
+        </div>
+        <div class="row">
+            {{if .PublisherName }}
+            <div class="row">
+                <span class="col">Publisher: </span>
+                <span class="col">{{ .PublisherName }} </span>
+            </div>
+            {{ end }}
+            {{if .ContactEmail }}
+                <div class="row">
+                    <span class="col">Contact: </span>
+                    <span class="col"><a href="{{ .ContactEmail }}?subject={{ .Title }} - {{ .Identifier }}" target="_blank">{{ .ContactFn }}</a></span>
+                </div>
+            {{ end }}
+        </div>
+        <div class="row">
+            <div class="row">
+                <span class="col">Keywords: {{ .Keyword }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <span class="col">BureauCode: {{ .BureauCode }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <span class="col">ProgramCode: {{ .ProgramCode }}</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

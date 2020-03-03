@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"html/template"
 	"io"
 	"net/http"
@@ -48,8 +49,9 @@ func main() {
 	e.Renderer = t
 	e.Static("/", "web/assets")
 	e.GET("/", indexHandler)
+	e.GET("/details/:id", detailsHandler)
 	e.GET("/datasets", datasetHandler)
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":"))
 }
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
@@ -58,13 +60,29 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 
 func indexHandler(c echo.Context) error {
 	t.templates = template.Must(template.ParseGlob("web/templates/*.html"))
-
 	ds, err := dataset.GetDataSets(0, 0)
 	if err != nil {
 		c.Logger().Fatal(err)
 		return err
 	}
 	return c.Render(http.StatusOK, "index.html", ds)
+}
+
+func detailsHandler(c echo.Context) error {
+	t.templates = template.Must(template.ParseGlob("web/templates/*.html"))
+	id := c.Param("id")
+	if id == "" {
+		return errors.New("bad request")
+	}
+	ds, err := dataset.GetDataSet(id)
+	if err != nil {
+		c.Logger().Fatal(err)
+		return err
+	}
+	if ds == nil {
+		return errors.New("not found")
+	}
+	return c.Render(http.StatusOK, "details.html", ds)
 }
 
 func datasetHandler(c echo.Context) error {
