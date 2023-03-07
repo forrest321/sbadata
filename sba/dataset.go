@@ -2,6 +2,7 @@ package dataset
 
 import (
 	"errors"
+	"fmt"
 
 	"strings"
 
@@ -100,7 +101,7 @@ type JsonResponse struct {
 	} `json:"dataset"`
 }
 
-func GetDataSet(id string) (*DataSet, error){
+func GetDataSet(id string) (*DataSet, error) {
 	db, err := gorm.Open("sqlite3", "sba.db")
 	if err != nil {
 		return nil, err
@@ -132,11 +133,13 @@ func GetDataSets(page, limit int) ([]DataSet, error) {
 func ImportDataSets() ([]DataSet, error) {
 	payload, err := getJsonPayload()
 	if err != nil {
+		fmt.Printf("\nError in getJsonPayload, \n%v\n", err)
 		return nil, err
 	}
 
 	dataSets, err := parsePayload(payload)
 	if err != nil {
+		fmt.Printf("\nError in parsePayload, \n%v\n", err)
 		return nil, err
 	}
 
@@ -144,7 +147,7 @@ func ImportDataSets() ([]DataSet, error) {
 }
 
 func getJsonPayload() ([]byte, error) {
-	var payloadUrl = "https://www.sba.gov/sites/default/files/data.json"
+	var payloadUrl = "https://www.sba.gov/data.json"
 	client := resty.New()
 	client.SetAllowGetMethodPayload(true)
 
@@ -165,6 +168,7 @@ func parsePayload(data []byte) ([]DataSet, error) {
 	jr := new(JsonResponse)
 	err := jr.UnmarshalJSON(data)
 	if err != nil {
+		fmt.Printf("\nError in parsePayload, \n%v\n", err)
 		return nil, err
 	}
 

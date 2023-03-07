@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"html/template"
 	"io"
 	"net/http"
@@ -32,6 +33,7 @@ func init() {
 	ds, err := dataset.ImportDataSets()
 
 	if err != nil {
+		fmt.Print(err)
 		panic(err)
 	}
 
@@ -51,7 +53,7 @@ func main() {
 	e.GET("/", indexHandler)
 	e.GET("/details/:id", detailsHandler)
 	e.GET("/datasets", datasetHandler)
-	e.Logger.Fatal(e.Start(":80"))
+	e.Logger.Fatal(e.Start(":8080"))
 }
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
